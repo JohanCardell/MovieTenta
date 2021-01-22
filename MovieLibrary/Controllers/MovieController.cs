@@ -13,9 +13,15 @@ namespace MovieLibrary.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class MovieController
+    public class MovieController : Controller
     {
-        static HttpClient client = new HttpClient();
+        private readonly IMovieHandler _movieHandler;
+        private HttpClient client  { get; set; } = new HttpClient();
+
+        public MovieController(IMovieHandler movieHandler)
+        {
+            _movieHandler = movieHandler;
+        }
 
         [HttpGet]
         [Route("/toplist")]
@@ -32,33 +38,11 @@ namespace MovieLibrary.Controllers
             //return TitlesInOrderBasedOnRating(ascending, unsortedMovieList);
         }
 
-        private static List<string> TitlesInOrderBasedOnRating(bool ascending, List<Movie> movieList)
-        {
-            List<Movie> sortedMovieList = new List<Movie>();
-            List<string> sortedTitlesList = new List<string>();
-            foreach (var move in movieList)
-            {
+      
 
-            }
-            if (ascending)
-            {
-                //sortedMovieList = unsortedDetailedMovieList.OrderBy(e => e.rated).ToList();
-            }
-            else
-            {
-                sortedMovieList = sortedMovieList.OrderByDescending(e => e.rated).ToList();
-            }
-            foreach (var m in sortedMovieList)
-            {
-                sortedTitlesList.Add(m.title);
-            }
-            return sortedTitlesList;
-        }
+     
 
-        private static List<IMovie> RemoveDuplicates(List<IMovie> movies, List<IMovie> detailedMovies)
-        {
-            return movies.Concat(detailedMovies).Distinct(new MovieComparer()).ToList();
-        }
+      
 
         //private List<IMovie> CombineLists(List<IMovie> movies, List<IMovie> detailedMovies)
         //{
