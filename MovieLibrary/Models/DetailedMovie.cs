@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MovieLibrary.Models
 {
-    public class DetailedMovie : IMovie
+    public class DetailedMovie //: IMovie
     {
         public string id { get; set; }
         public string title { get; set; }

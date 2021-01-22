@@ -4,5 +4,6 @@
     {
         string id { get; set; }
         string title { get; set; }
+        string rated { get; set; }
     }
 }

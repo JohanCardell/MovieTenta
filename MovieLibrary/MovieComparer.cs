@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MovieLibrary
 {
-    public class MovieComparer : IEqualityComparer<IMovie>
+    public class MovieComparer : IMovieComparer
     {
         public bool Equals(IMovie a, IMovie b)
         {
             return a.id == b.id;
-           
+
         }
         public int GetHashCode(IMovie m)
         {
-            return int.Parse( m.id);
+            return int.Parse(m.id);
         }
     }
 }
